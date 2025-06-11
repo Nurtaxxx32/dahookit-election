@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dahook IT গুগল ভেও ৩: সিনেম্যাটিক ভিডিও তৈরির গাইড</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: The application is designed as a single-page, tab-based interactive guide. This structure was chosen for usability, allowing users to move between fundamental concepts and advanced techniques without losing context. The core user flow is progressive: start with a basic prompt, and in each section, learn how to add layers of detail (style, camera motion, lighting, etc.). Interactive elements like accordions and clickable examples break down complex information into digestible pieces. This task-oriented, non-linear navigation is superior to a simple document scroll because it encourages exploration and reinforces learning by demonstrating the immediate impact of each new concept on a sample prompt. -->
+    <!-- Visualization & Content Choices: The guide translates the report's text-heavy information into an interactive experience. Goal: Organize & Inform -> Presentation: Tabbed sections for logical grouping (Basics, Cinematics, Advanced). Interaction: JS-powered tabs for navigation. Justification: Prevents overwhelming the user. Goal: Explain & Compare -> Presentation: Accordions for techniques like camera motion and lighting. Interaction: Click to expand/collapse, revealing detailed explanations, Bengali context, and English prompt examples. Justification: Allows users to focus on one concept at a time. Goal: Demonstrate -> Presentation: A "Live Prompt Builder" shows a base prompt that is dynamically updated as the user explores different techniques. Interaction: JS updates the prompt text and highlights the added part. Justification: Provides a clear, practical demonstration of how concepts combine. Library/Method: Vanilla JS for all interactions, Tailwind for styling. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #FDFBF8; /* Warm Neutral Background */
+            color: #4A4A4A;
+        }
+        .font-roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+        .tab-btn {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .tab-btn.active {
+            color: #D35400; /* Subtle Accent */
+            border-bottom-color: #D35400;
+        }
+        .accordion-header {
+            transition: background-color 0.3s ease;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .prompt-highlight {
+            background-color: #FAE5D3; /* Lighter accent for highlight */
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .concept-card {
+            background-color: #FFFFFF;
+            border: 1px solid #EAEAEA;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-2">Dahook IT গুগল ভেও ৩: সিনেম্যাটিক ভিডিও তৈরির গাইড</h1>
+            <p class="text-lg text-gray-600">আপনার সৃজনশীল ধারণাকে অত্যাশ্চর্য সিনেম্যাটিক বাস্তবতায় রূপান্তরিত করার জন্য একটি ইন্টারেক্টিভ গাইড।</p>
+        </header>
+
+        <main>
+            <!-- Tab Navigation -->
+            <div class="mb-8 border-b border-gray-200">
+                <nav class="flex flex-wrap -mb-px" id="tab-nav">
+                    <button class="tab-btn active text-lg px-4 py-3 font-semibold" data-tab="introduction">ভূমিকা</button>
+                    <button class="tab-btn text-lg px-4 py-3 font-semibold" data-tab="prompt-builder">প্রম্পট বিল্ডার</button>
+                    <button class="tab-btn text-lg px-4 py-3 font-semibold" data-tab="techniques">সিনেম্যাটিক কৌশল</button>
+                    <button class="tab-btn text-lg px-4 py-3 font-semibold" data-tab="final-prompt">চূ চূড়ান্ত প্রম্পট</button>
+                </nav>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="tab-content">
+                <!-- Introduction Tab -->
+                <div id="introduction" class="tab-pane active">
+                    <div class="concept-card rounded-lg p-6">
+                        <h2 class="text-2xl font-bold mb-4">ভেও ৩ কী?</h2>
+                        <p class="mb-4">গুগল ভেও ৩ একটি শক্তিশালী টেক্সট-টু-ভিডিও মডেল যা আপনাকে শুধুমাত্র টেক্সট বর্ণনা ব্যবহার করে উচ্চ-মানের, সিনেম্যাটিক ভিডিও ক্লিপ তৈরি করতে দেয়। আপনার প্রম্পট যত বিস্তারিত এবং সুনির্দিষ্ট হবে, ফলাফলও তত ভালো হবে। এই গাইডটি আপনাকে দেখাবে কিভাবে ধাপে ধাপে একটি সাধারণ ধারণা থেকে একটি বিস্তারিত, কার্যকর প্রম্পট তৈরি করতে হয়।</p>
+                        <h3 class="text-xl font-semibold mb-2">এই গাইডটি কীভাবে ব্যবহার করবেন?</h3>
+                        <p>আমরা একটি সাধারণ প্রম্পট দিয়ে শুরু করব: <code class="font-roboto bg-gray-100 p-1 rounded">"Grandma_Elara একটি তুষারাবৃত বনে হাঁটছেন।"</code>। প্রতিটি বিভাগে, আমরা এই প্রম্পটে নতুন নতুন উপাদান যোগ করব এবং দেখাব কিভাবে প্রতিটি সংযোজন ভিডিওর মান উন্নত করে। 'প্রম্পট বিল্ডার' ট্যাবে আপনি এই পরিবর্তনগুলি লাইভ দেখতে পারবেন।</p>
+                    </div>
+                </div>
+
+                <!-- Prompt Builder Tab -->
+                <div id="prompt-builder" class="tab-pane hidden">
+                     <div class="concept-card rounded-lg p-6">
+                        <h2 class="text-2xl font-bold mb-4">লাইভ প্রম্পট বিল্ডার</h2>
+                        <p class="mb-4">'সিনেম্যাটিক কৌশল' ট্যাবে বিভিন্ন কৌশল অন্বেষণ করার সাথে সাথে আমাদের উদাহরণ প্রম্পটটি কীভাবে বিকশিত হয় তা এখানে দেখুন। প্রতিটি নতুন উপাদান কীভাবে প্রম্পটকে আরও সমৃদ্ধ এবং বিস্তারিত করে তোলে তা লক্ষ্য করুন।</p>
+                        <div class="bg-gray-900 text-white p-6 rounded-lg font-roboto text-base leading-relaxed">
+                            <h3 class="text-lg font-semibold mb-2 text-amber-300">বিকশিত প্রম্পট:</h3>
+                            <p id="live-prompt-display">Grandma_Elara walks in a snowy forest.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Techniques Tab -->
+                <div id="techniques" class="tab-pane hidden">
+                    <div id="accordion-container">
+                        <!-- Accordion Item 1: Basic Elements -->
+                        <div class="concept-card rounded-lg mb-4">
+                            <div class="accordion-header p-4 cursor-pointer flex justify-between items-center bg-gray-50 rounded-t-lg" data-target="accordion-1">
+                                <h3 class="text-xl font-semibold">১. মৌলিক উপাদান: ধারণার ভিত্তি</h3>
+                                <span class="transform transition-transform duration-300">▼</span>
+                            </div>
+                            <div id="accordion-1" class="accordion-content p-6 border-t border-gray-200">
+                                <p class="mb-4">যেকোনো ভালো প্রম্পটের তিনটি মূল অংশ থাকে: সাবজেক্ট (কে বা কী), কনটেক্সট (কোথায় ও কখন), এবং অ্যাকশন (কী করছে)। এই তিনটি উপাদান আপনার ধারণার ভিত্তি তৈরি করে।</p>
+                                <ul class="space-y-4">
+                                    <li><strong>সাবজেক্ট (Subject):</strong> আপনার দৃশ্যের প্রধান চরিত্র বা বস্তু। এটিকে যতটা সম্ভব বিস্তারিতভাবে বর্ণনা করুন।
+                                        <div class="mt-2 p-3 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                                            <p class="font-semibold text-blue-800">উদাহরণ যোগ করুন:</p>
+                                            <code class="font-roboto text-sm block bg-white p-2 mt-1 rounded">Grandma_Elara (from my ingredients), 78 years old, with soft silver hair tied in a loose bun, kind eyes, and a weathered but gentle face, wearing a thick, dark green wool cloak with a fur-lined hood</code>
+                                        </div>
+                                    </li>
+                                    <li><strong>কনটেক্সট (Context):</strong> আপনার সাবজেক্ট কোথায় এবং কোন সময়ে আছে।
+                                        <div class="mt-2 p-3 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                                            <p class="font-semibold text-blue-800">উদাহরণ যোগ করুন:</p>
+                                            <code class="font-roboto text-sm block bg-white p-2 mt-1 rounded">through a dense, ancient snowy forest filled with towering pine trees, during a late afternoon winter twilight</code>
+                                        </div>
+                                    </li>
+                                    <li><strong>অ্যাকশন (Action):</strong> আপনার সাবজেক্ট কী করছে তার সুনির্দিষ্ট বর্ণনা।
+                                        <div class="mt-2 p-3 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                                            <p class="font-semibold text-blue-800">উদাহরণ যোগ করুন:</p>
+                                            <code class="font-roboto text-sm block bg-white p-2 mt-1 rounded">slowly walks with a steady, deliberate gait</code>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <button class="mt-4 bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700" onclick="updatePrompt('basics')">প্রম্পট আপডেট করুন</button>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 2: Cinematic Style -->
+                        <div class="concept-card rounded-lg mb-4">
+                            <div class="accordion-header p-4 cursor-pointer flex justify-between items-center bg-gray-50" data-target="accordion-2">
+                                <h3 class="text-xl font-semibold">২. সিনেম্যাটিক স্টাইল ও ফিজিক্স</h3>
+                                <span class="transform transition-transform duration-300">▼</span>
+                            </div>
+                            <div id="accordion-2" class="accordion-content p-6 border-t border-gray-200">
+                                <p class="mb-4">আপনার ভিডিওর সামগ্রিক ভিজ্যুয়াল টোন এবং বাস্তবতার স্তর নির্ধারণ করুন। এটি কি একটি নির্দিষ্ট ফিল্ম জেনারের মতো দেখাবে? পরিবেশের সাথে চরিত্রের মিথস্ক্রিয়া কেমন হবে?</p>
+                                <ul class="space-y-4">
+                                     <li><strong>সামগ্রিক স্টাইল (Overall Style):</strong> আপনার ভিডিওর ভিজ্যুয়াল টোন সেট করুন।
+                                        <div class="mt-2 p-3 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                                            <p class="font-semibold text-green-800">উদাহরণ যোগ করুন:</p>
+                                            <code class="font-roboto text-sm block bg-white p-2 mt-1 rounded">Cinematic fantasy realism, enchanting and slightly melancholic, shot on 35mm film</code>
+                                        </div>
+                                    </li>
+                                    <li><strong>বাস্তবসম্মত ফিজিক্স (Realistic Physics):</strong> পরিবেশের সাথে চরিত্রের বাস্তবসম্মত মিথস্ক্রিয়া যোগ করুন।
+                                        <div class="mt-2 p-3 bg-green-50 border-l-4 border-green-400 rounded-r-lg">
+                                            <p class="font-semibold text-green-800">উদাহরণ যোগ করুন:</p>
+                                            <code class="font-roboto text-sm block bg-white p-2 mt-1 rounded">her boots crunching softly on freshly fallen, deep snow. Her cloak ripples realistically in the gentle wind. Her breath misting visibly in the cold air.</code>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <button class="mt-4 bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-700" onclick="updatePrompt('style')">প্রম্পট আপডেট করুন</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Accordion Item 3: Camera & Composition -->
+                        <div class="concept-card rounded-lg mb-4">
+                            <div class="accordion-header p-4 cursor-pointer flex justify-between items-center bg-gray-50" data-target="accordion-3">
+                                <h3 class="text-xl font-semibold">৩. ক্যামেরা ও কম্পোজিশন</h3>
+                                 <span class="transform transition-transform duration-300">▼</span>
+                            </div>
+                            <div id="accordion-3" class="accordion-content p-6 border-t border-gray-200">
+                                <p class="mb-4">আপনি এখন ভার্চুয়াল পরিচালক। ক্যামেরা কীভাবে নড়াচড়া করবে এবং শটটি কীভাবে ফ্রেম করা হবে তা নির্দেশ করুন। বিভিন্ন কৌশল একত্রিত করে জটিল এবং গতিশীল শট তৈরি করা যায়।</p>
+                                
+                                <div id="camera-accordion-container">
+                                    <!-- Camera Motion -->
+                                    <div class="border-b mb-2">
+                                        <div class="accordion-header p-2 cursor-pointer flex justify-between items-center" data-target="camera-accordion-1">
+                                            <h4 class="text-lg font-semibold">ক্যামেরা মোশন</h4>
+                                            <span class="transform transition-transform duration-300 text-sm">▼</span>
+                                        </div>
+                                        <div id="camera-accordion-1" class="accordion-content p-4">
+                                            <p class="mb-2">ক্যামেরা কীভাবে নড়াচড়া করে তা দৃশ্যের অনুভূতিকে ব্যাপকভাবে প্রভাবিত করে।</p>
+                                            <ul class="space-y-3 font-roboto text-sm">
+                                                <li><strong class="font-sans text-base text-gray-800">Tracking Shot:</strong> ক্যামেরা সাবজেক্টকে অনুসরণ করে। প্রম্পট: <code class="bg-gray-200 p-1 rounded">A smooth tracking shot follows [subject].</code></li>
+                                                <li><strong class="font-sans text-base text-gray-800">Panning:</strong> ক্যামেরা অনুভূমিকভাবে ঘোরে। প্রম্পট: <code class="bg-gray-200 p-1 rounded">A slow pan right reveals [something new].</code></li>
+                                                <li><strong class="font-sans text-base text-gray-800">Tilting:</strong> ক্যামেরা উল্লম্বভাবে ঘোরে। প্রম্পট: <code class="bg-gray-200 p-1 rounded">Tilt down from the sky to the character.</code></li>
+                                                <li><strong class="font-sans text-base text-gray-800">Dolly Shot:</strong> ক্যামেরা শারীরিকভাবে সামনে বা পিছনে চলে। প্রম্পট: <code class="bg-gray-200 p-1 rounded">A slow dolly-in on the character's face.</code></li>
+                                                <li><strong class="font-sans text-base text-gray-800">Zoom:</strong> লেন্সের ফোকাল লেংথ পরিবর্তন হয়। প্রম্পট: <code class="bg-gray-200 p-1 rounded">A rapid zoom-in on an object.</code></li>
+                                                <li><strong class="font-sans text-base text-gray-800">Crane/Aerial Shot:</strong> ক্যামেরা অনেক উঁচু থেকে শট নেয়। প্রম্পট: <code class="bg-gray-200 p-1 rounded">Aerial shot of the forest.</code></li>
+                                                <li><strong class="font-sans text-base text-gray-800">Arc Shot:</strong> ক্যামেরা সাবজেক্টের চারপাশে বৃত্তাকারে ঘোরে। প্রম্পট: <code class="bg-gray-200 p-1 rounded">An arc shot circles slowly around the [subject].</code></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Composition -->
+                                    <div class="border-b mb-2">
+                                        <div class="accordion-header p-2 cursor-pointer flex justify-between items-center" data-target="camera-accordion-2">
+                                            <h4 class="text-lg font-semibold">কম্পোজিশন ও লেন্স</h4>
+                                            <span class="transform transition-transform duration-300 text-sm">▼</span>
+                                        </div>
+                                        <div id="camera-accordion-2" class="accordion-content p-4">
+                                            <p class="mb-2">শটটি কীভাবে ফ্রেম করা হয় এবং কোন লেন্স ব্যবহার করা হয় তা নির্দিষ্ট করুন।</p>
+                                            <ul class="space-y-3 font-roboto text-sm">
+                                                <li><strong class="font-sans text-base text-gray-800">Medium Shot (MS):</strong> সাবজেক্টের শরীরের উপরের অংশ দেখায়। প্রম্পট: <code class="bg-gray-200 p-1 rounded">Medium shot, focusing on her upper body.</code></li>
+                                                <li><strong class="font-sans text-base text-gray-800">Wide Shot (WS):</strong> পুরো পরিবেশ সহ সাবজেক্টকে দেখায়। প্রম্পট: <code class="bg-gray-200 p-1 rounded">Wide shot of the character in the landscape.</code></li>
+                                                <li><strong class="font-sans text-base text-gray-800">Close-up (CU):</strong> সাবজেক্টের মুখের উপর ফোকাস করে। প্রম্পট: <code class="bg-gray-200 p-1 rounded">Close-up on his eyes.</code></li>
+                                                <li><strong class="font-sans text-base text-gray-800">Shallow Depth of Field:</strong> সাবজেক্ট ফোকাসে থাকে, ব্যাকগ্রাউন্ড ঝাপসা। প্রম্পট: <code class="bg-gray-200 p-1 rounded">with a shallow depth of field.</code></li>
+                                                <li><strong class="font-sans text-base text-gray-800">Deep Focus:</strong> ফোরগ্রাউন্ড এবং ব্যাকগ্রাউন্ড উভয়ই স্পষ্ট। প্রম্পট: <code class="bg-gray-200 p-1 rounded">with deep focus.</code></li>
+                                                <li><strong class="font-sans text-base text-gray-800">Rack Focus:</strong> ফোকাস এক বস্তু থেকে অন্য বস্তুতে স্থানান্তরিত হয়। প্রম্পট: <code class="bg-gray-200 p-1 rounded">A rack focus from the flower to the character's face.</code></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                     <!-- Combinations -->
+                                    <div class="border-b mb-2">
+                                        <div class="accordion-header p-2 cursor-pointer flex justify-between items-center" data-target="camera-accordion-3">
+                                            <h4 class="text-lg font-semibold">কৌশল সমন্বয়</h4>
+                                            <span class="transform transition-transform duration-300 text-sm">▼</span>
+                                        </div>
+                                        <div id="camera-accordion-3" class="accordion-content p-4">
+                                            <p class="mb-2">সত্যিকারের সিনেম্যাটিক অনুভূতির জন্য বিভিন্ন কৌশল একত্রিত করুন।</p>
+                                            <ul class="space-y-3 font-roboto text-sm">
+                                                <li><strong class="font-sans text-base text-gray-800">Tracking + Arc:</strong> দর্শককে চরিত্রের সাথে চলার অনুভূতি দেয় এবং একই সাথে চারপাশ দেখায়। প্রম্পট: <code class="bg-gray-200 p-1 rounded">An arc shot circles slowly around [subject], starting from a smooth tracking shot that follows closely behind.</code></li>
+                                                <li><strong class="font-sans text-base text-gray-800">Dolly + Zoom (Vertigo Effect):</strong> মানসিক অস্থিরতা বা একটি নাটকীয় উপলব্ধি বোঝাতে ব্যবহৃত হয়। প্রম্পট: <code class="bg-gray-200 p-1 rounded">A dolly-in on the character's face while simultaneously zooming out, creating a disorienting vertigo effect.</code></li>
+                                                 <li><strong class="font-sans text-base text-gray-800">Wide-Angle Lens + Deep Focus:</strong> চরিত্রের ক্ষুদ্রতা এবং পরিবেশের বিশালতাকে একসাথে তুলে ধরে। প্রম্পট: <code class="bg-gray-200 p-1 rounded">A wide-angle lens shot with deep focus, showing a tiny figure against a vast landscape.</code></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="mt-4 bg-purple-500 text-white font-bold py-2 px-4 rounded hover:bg-purple-700" onclick="updatePrompt('camera')">প্রম্পট আপডেট করুন</button>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 4: Ambiance & Audio -->
+                        <div class="concept-card rounded-lg mb-4">
+                            <div class="accordion-header p-4 cursor-pointer flex justify-between items-center bg-gray-50" data-target="accordion-4">
+                                <h3 class="text-xl font-semibold">৪. অ্যাম্বিয়েন্স এবং অডিও</h3>
+                                <span class="transform transition-transform duration-300">▼</span>
+                            </div>
+                            <div id="accordion-4" class="accordion-content p-6 border-t border-gray-200">
+                                <p class="mb-4">আলো, রঙ এবং শব্দ যোগ করে আপনার দৃশ্যের মেজাজ এবং আবেগিক গভীরতা বাড়ান।</p>
+                                 <ul class="space-y-4">
+                                     <li><strong>লাইটিং ও কালার প্যালেট (Lighting & Color):</strong> দৃশ্যের আলো এবং রঙের বর্ণনা দিন।
+                                        <div class="mt-2 p-3 bg-orange-50 border-l-4 border-orange-400 rounded-r-lg">
+                                            <p class="font-semibold text-orange-800">উদাহরণ যোগ করুন:</p>
+                                            <code class="font-roboto text-sm block bg-white p-2 mt-1 rounded">Soft, ethereal blue and purple twilight tones from the blue hour illuminate the forest, with a gentle, magical glow emanating from between the trees, casting long, subtle shadows.</code>
+                                        </div>
+                                    </li>
+                                    <li><strong>অডিও কিউ (Audio Cues):</strong> দৃশ্যের শব্দ যোগ করুন। সঙ্গীত চান না হলে `No music` উল্লেখ করুন।
+                                        <div class="mt-2 p-3 bg-orange-50 border-l-4 border-orange-400 rounded-r-lg">
+                                            <p class="font-semibold text-orange-800">উদাহরণ যোগ করুন:</p>
+                                            <code class="font-roboto text-sm block bg-white p-2 mt-1 rounded">Audio: The soft, rhythmic crunching of her boots in the snow, the gentle, almost silent fall of individual snowflakes, and a very distant, faint hoot of an owl. No music.</code>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <button class="mt-4 bg-orange-500 text-white font-bold py-2 px-4 rounded hover:bg-orange-700" onclick="updatePrompt('ambiance')">প্রম্পট আপডেট করুন</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Final Prompt Tab -->
+                <div id="final-prompt" class="tab-pane hidden">
+                    <div class="concept-card rounded-lg p-6">
+                        <h2 class="text-2xl font-bold mb-4">চূড়ান্ত সর্বাঙ্গীণ প্রম্পট (Final All-Encompassing Prompt)</h2>
+                        <p class="mb-4">এই সমস্ত উপাদানগুলিকে একত্রিত করে, আমাদের চূড়ান্ত প্রম্পটটি হতে পারে এইরকম। প্রতিটি অংশ কীভাবে একটি সম্পূর্ণ এবং সমৃদ্ধ সিনেম্যাটিক দৃশ্য তৈরি করতে একসাথে কাজ করে তা লক্ষ্য করুন।</p>
+                        
+                        <div class="bg-gray-900 text-white p-6 rounded-lg font-roboto text-base leading-relaxed space-y-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-amber-300">System Prompt:</h3>
+                                <p>`Act as an expert cinematographer specializing in melancholic fantasy, create a scene for Grandma_Elara with dramatic lighting.`</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-amber-300">Main Prompt:</h3>
+                                <p>
+                                    <span class="prompt-highlight">Cinematic fantasy realism, enchanting and slightly melancholic, reminiscent of a classic storybook adaptation, shot on 35mm film.</span>
+                                    <span class="prompt-highlight">An arc shot circles slowly around Grandma_Elara, starting from a smooth tracking shot that follows closely behind her, maintaining a steady, eye-level perspective.</span>
+                                    <span class="prompt-highlight">Medium shot, focusing on her upper body and the immediate snowy path, with a shallow depth of field and soft focus that softly blurs the distant trees.</span>
+                                    <span class="prompt-highlight">Soft, ethereal blue and purple twilight tones from the blue hour illuminate the forest, with a gentle, magical glow emanating from between the trees, casting long, subtle shadows.</span>
+                                    <span class="prompt-highlight">Audio: The soft, rhythmic crunching of her boots in the snow, the gentle, almost silent fall of individual snowflakes, and a very distant, faint hoot of an owl. No music.</span>
+                                    <span class="prompt-highlight">Grandma_Elara (from my ingredients), 78 years old, with soft silver hair tied in a loose bun, kind eyes, and a weathered but gentle face, wearing a thick, dark green wool cloak with a fur-lined hood,</span>
+                                    <span class="prompt-highlight">slowly walks with a steady, deliberate gait, her boots crunching softly on freshly fallen, deep snow. Her cloak ripples realistically in the gentle wind. She periodically glances around, her breath misting visibly in the cold air. The falling snowflakes gently land and accumulate realistically on her cloak and hair, showing fine detail and soft accumulation.</span>
+                                    <span class="prompt-highlight">Her expression is one of quiet contemplation,</span>
+                                    <span class="prompt-highlight">as she navigates through a dense, ancient snowy forest filled with towering pine trees, during a late afternoon winter twilight.</span>
+                                </p>
+                            </div>
+                             <div>
+                                <h3 class="text-lg font-semibold text-amber-300">Negative Prompt:</h3>
+                                <p>`urban background, man-made structures, facial distortion, blurry, low quality`</p>
+                            </div>
+                             <div>
+                                <h3 class="text-lg font-semibold text-amber-300">Output Configuration:</h3>
+                                <p>`Temperature: 0.3, Top-P: 0.95`</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-btn');
+        const panes = document.querySelectorAll('.tab-pane');
+        const tabNav = document.getElementById('tab-nav');
+
+        tabNav.addEventListener('click', (e) => {
+            if (e.target.classList.contains('tab-btn')) {
+                const tabId = e.target.getAttribute('data-tab');
+
+                tabs.forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                panes.forEach(pane => {
+                    pane.classList.add('hidden');
+                });
+
+                e.target.classList.add('active');
+                document.getElementById(tabId).classList.remove('hidden');
+            }
+        });
+
+        function setupAccordion(containerId) {
+            const container = document.getElementById(containerId);
+            container.addEventListener('click', function(e) {
+                const header = e.target.closest('.accordion-header');
+                if (!header) return;
+
+                const targetId = header.getAttribute('data-target');
+                const content = document.getElementById(targetId);
+                const icon = header.querySelector('span');
+
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    if(icon) icon.classList.remove('rotate-180');
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    if(icon) icon.classList.add('rotate-180');
+                }
+            });
+        }
+        
+        setupAccordion('accordion-container');
+        setupAccordion('camera-accordion-container');
+
+
+        // Live Prompt Builder Logic
+        const livePromptDisplay = document.getElementById('live-prompt-display');
+
+        const promptParts = {
+            base: `Grandma_Elara walks in a snowy forest.`,
+            basics: {
+                subject: `Grandma_Elara (from my ingredients), 78 years old, with soft silver hair tied in a loose bun, kind eyes, and a weathered but gentle face, wearing a thick, dark green wool cloak with a fur-lined hood`,
+                action: `slowly walks with a steady, deliberate gait`,
+                context: `through a dense, ancient snowy forest filled with towering pine trees, during a late afternoon winter twilight.`
+            },
+            style: {
+                style: `Cinematic fantasy realism, enchanting and slightly melancholic, shot on 35mm film.`,
+                physics: `Her boots crunching softly on freshly fallen, deep snow. Her cloak ripples realistically in the gentle wind. Her breath misting visibly in the cold air.`
+            },
+            camera: {
+                motion: `An arc shot circles slowly around Grandma_Elara, starting from a smooth tracking shot that follows closely behind her, maintaining a steady, eye-level perspective.`,
+                composition: `Medium shot, focusing on her upper body and the immediate snowy path, with a shallow depth of field and soft focus that softly blurs the distant trees.`
+            },
+            ambiance: {
+                lighting: `Soft, ethereal blue and purple twilight tones from the blue hour illuminate the forest, with a gentle, magical glow emanating from between the trees, casting long, subtle shadows.`,
+                audio: `Audio: The soft, rhythmic crunching of her boots in the snow, the gentle, almost silent fall of individual snowflakes, and a very distant, faint hoot of an owl. No music.`
+            }
+        };
+
+        let currentPromptState = {
+            basics: false,
+            style: false,
+            camera: false,
+            ambiance: false
+        };
+
+        function updateLivePrompt() {
+            let prompt = "";
+            if (currentPromptState.style) prompt += `${promptParts.style.style} `;
+            if (currentPromptState.camera) prompt += `${promptParts.camera.motion} ${promptParts.camera.composition} `;
+            if (currentPromptState.ambiance) prompt += `${promptParts.ambiance.lighting} ${promptParts.ambiance.audio} `;
+
+            if (currentPromptState.basics) {
+                prompt += `${promptParts.basics.subject} ${promptParts.basics.action}, `;
+                if(currentPromptState.style) prompt += `${promptParts.style.physics} `;
+                prompt += `${promptParts.basics.context}`;
+            } else {
+                prompt += promptParts.base;
+            }
+            
+            livePromptDisplay.innerHTML = prompt.trim();
+        }
+
+        function updatePrompt(section) {
+            currentPromptState[section] = true;
+            updateLivePrompt();
+            
+            // Switch to the prompt builder tab to show the update
+            tabs.forEach(tab => tab.classList.remove('active'));
+            panes.forEach(pane => pane.classList.add('hidden'));
+            document.querySelector('[data-tab="prompt-builder"]').classList.add('active');
+            document.getElementById('prompt-builder').classList.remove('hidden');
+
+        }
+
+        // Initialize
+        updateLivePrompt();
+    </script>
+
+</body>
+</html>
