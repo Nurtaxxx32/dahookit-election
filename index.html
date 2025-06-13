@@ -3,315 +3,418 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dahook IT Veo 3 ইনফোগ্রাফিক: গুগল ভেও ৩ দিয়ে এআই-বর্ধিত চলচ্চিত্র নির্মাণ</title>
+    <title>Dahook IT ডিজিটাল রাজনৈতিক আধিপত্যের পূর্ণাঙ্গ কৌশল</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Roboto:wght@700;900&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Energetic & Playful -->
-    <!-- Application Structure Plan: The infographic is structured as a top-to-bottom narrative scroll, guiding the user from foundational concepts to advanced techniques in Veo 3 prompting. This linear flow mimics the process of building a prompt, making it intuitive. Sections include: 1) A 'Big Number' hook, 2) The 7 Core Elements of a prompt, 3) A flowchart for 'Enhancing Realism', 4) A comparative grid for 'Cinematic Techniques' (Camera & Lighting), and 5) a final 'Master Prompt' breakdown. This structure tells a coherent story, making complex data digestible, which is more effective for an infographic than a tabbed or dashboard layout. -->
-    <!-- Visualization & Content Choices: Report Info: Core prompt components -> Goal: Compare/Inform -> Viz: Donut Chart & styled HTML cards. Justification: Donut chart quickly shows relative importance, while cards clearly present each element. Library: Chart.js. Report Info: Process of adding realism -> Goal: Organize -> Viz: HTML/CSS Flowchart. Justification: Visually represents the step-by-step process of enriching a prompt. Method: Tailwind CSS. Report Info: Camera motions & lighting styles -> Goal: Compare -> Viz: HTML/CSS Grid with icons. Justification: Allows for easy side-by-side comparison of different techniques. Method: Tailwind CSS + Unicode Icons. Report Info: Key stats (video length) -> Goal: Inform -> Viz: 'Big Number' display. Justification: Makes key data points immediately stand out. Method: HTML/CSS. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background-color: #F8F9FA; /* Off-white background */
-        }
-        .font-roboto {
-            font-family: 'Roboto', sans-serif;
-        }
-        .brand-teal { color: #1ABC9C; }
-        .brand-green { color: #2ECC71; }
-        .brand-blue { color: #3498DB; }
-        .brand-purple { color: #9B59B6; }
-        .brand-dark-blue { color: #34495E; }
-        .brand-orange { color: #F39C12; }
-        .brand-red { color: #E74C3C; }
-
-        .bg-brand-teal { background-color: #1ABC9C; }
-        .bg-brand-green { background-color: #2ECC71; }
-        .bg-brand-blue { background-color: #3498DB; }
-        .bg-brand-purple { background-color: #9B59B6; }
-        .bg-brand-dark-blue { background-color: #34495E; }
-        .bg-brand-orange { background-color: #F39C12; }
-        .bg-brand-red { background-color: #E74C3C; }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #3498DB, #9B59B6);
-        }
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            background-color: #111827;
+            color: #E5E7EB;
         }
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            height: 300px;
+            height: 320px;
             max-height: 400px;
         }
         @media (min-width: 768px) {
             .chart-container {
-                height: 350px;
+                height: 400px;
             }
+        }
+        .card {
+            background-color: #1F2937;
+            border: 1px solid #374151;
         }
         .flow-arrow {
             font-size: 2rem;
             line-height: 1;
-            color: #bdc3c7;
+            color: #FC913A;
+        }
+        .hierarchy-level {
+            border: 2px solid #FC913A;
+            background-color: rgba(252, 145, 58, 0.1);
+        }
+        .dead-cat-table {
+            border: 2px dashed #4B5563;
+        }
+        .dead-cat-item {
+            transform: rotate(-10deg) scale(1.1);
+            animation: dead-cat-drop 0.8s ease-out forwards;
+        }
+        @keyframes dead-cat-drop {
+            from {
+                opacity: 0;
+                transform: translateY(-100px) rotate(-30deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(-10deg) scale(1.1);
+            }
         }
     </style>
 </head>
-<body class="text-gray-700">
+<body class="antialiased">
+    <div class="container mx-auto p-4 md:p-8">
 
-    <div class="container mx-auto px-4 py-8 md:py-12">
-
-        <!-- Header Section -->
         <header class="text-center mb-12 md:mb-16">
-            <h1 class="text-4xl md:text-6xl font-extrabold brand-dark-blue mb-4 leading-tight">Dahook IT Instruction Manual: গুগল ভেও ৩ দিয়ে সিনেম্যাটিক ভিডিও নির্মাণ</h1>
-            <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto">কীভাবে কার্যকর প্রম্পট ইঞ্জিনিয়ারিংয়ের মাধ্যমে আপনার সৃজনশীল ধারণাকে অত্যাশ্চর্য সিনেম্যাটিক বাস্তবতায় রূপান্তরিত করবেন তার একটি ভিজ্যুয়াল গাইড।</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4" style="color: #FF4E50;">ডিজিটাল রাজনৈতিক আধিপত্য (powered by Dahook IT) </h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">একটি পূর্ণাঙ্গ কৌশল: যেখানে প্রতিপক্ষ লড়াইয়ের আগেই মানসিক পরাজয় বরণ করে</p>
         </header>
 
-        <!-- Section 1: The Big Number -->
-        <section class="mb-12 md:mb-20 text-center">
-            <div class="card p-6 md:p-8 max-w-2xl mx-auto">
-                <p class="text-xl md:text-2xl text-gray-600 mb-2">ভেও ৩ এর সবচেয়ে কার্যকর ক্লিপ দৈর্ঘ্য হলো</p>
-                <div class="font-roboto font-black text-7xl md:text-9xl brand-teal tracking-tighter">৫-১৫</div>
-                <p class="text-xl md:text-2xl text-gray-600 mt-2">সেকেন্ড</p>
-                <p class="mt-4 text-base md:text-lg text-gray-500">এই সময়ের ক্লিপগুলো বিস্তারিত আখ্যান তৈরি করার জন্য সবচেয়ে ভালোভাবে কাজ করে এবং রিসোর্স ম্যানেজমেন্টের জন্য সেরা।</p>
-            </div>
-        </section>
+        <main class="space-y-16">
+            
+            <section id="war-engine" class="card rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-2" style="color: #F9D423;">আমাদের ‘ওয়ার ইঞ্জিন’</h2>
+                <p class="text-lg text-center text-gray-400 mb-8 max-w-3xl mx-auto">আমাদের বিজয় নিশ্চিত করবে এই সমন্বিত ত্রিস্তরীয় ডিজিটাল কমান্ড। প্রতিটি স্তর নিজস্ব নির্দিষ্ট ডিজিটাল অস্ত্র ব্যবহার করে একটি সুসংহত মতাদর্শ দ্বারা পরিচালিত অভিযান পরিচালনা করে, যার লক্ষ্য চূড়ান্ত বিজয় এবং প্রতিপক্ষের ওপর কার্যকরী ‘ন্যারেটিভ ডমিন্যান্স’ প্রতিষ্ঠা করা।</p>
+                
+                <div class="w-full overflow-x-auto p-4">
+                    <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8 text-center">
+                        <div class="flex-shrink-0 hierarchy-level rounded-lg p-6 shadow-lg w-64">
+                            <h3 class="text-xl font-bold" style="color: #EDE574;">স্তর ১: ফাউন্ডেশন</h3>
+                            <p class="text-gray-300 mt-2">জনমত গঠন ও সমর্থক ভিত্তি তৈরি</p>
+                            <div class="mt-4 text-sm font-semibold text-gray-400">অস্ত্র: ফেসবুক বুস্টিং, মেসেঞ্জার গ্রুপ</div>
+                        </div>
 
-        <!-- Section 2: Anatomy of a Prompt -->
-        <section class="mb-12 md:mb-20">
-            <h2 class="text-3xl md:text-4xl font-bold text-center brand-dark-blue mb-8">একটি পারফেক্ট প্রম্পটের গঠন</h2>
-            <p class="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">একটি শক্তিশালী প্রম্পট তৈরির জন্য ৭টি মূল উপাদান রয়েছে। প্রতিটি উপাদান আপনার চূড়ান্ত ভিডিওর উপর একটি নির্দিষ্ট প্রভাব ফেলে।</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="card p-6">
-                    <div class="chart-container h-80 md:h-96">
-                        <canvas id="promptCompositionChart"></canvas>
-                    </div>
-                    <p class="text-center mt-4 text-gray-500">একটি কার্যকর প্রম্পটে উপাদানগুলির আপেক্ষিক গুরুত্ব।</p>
-                </div>
-                <div class="grid grid-cols-1 gap-4">
-                    <div class="card p-4 flex items-center space-x-4">
-                        <span class="text-4xl">👤</span>
-                        <div>
-                            <h3 class="font-bold text-lg brand-teal">Subject</h3>
-                            <p class="text-sm">আপনার দৃশ্যের প্রধান চরিত্র বা বস্তু।</p>
-                        </div>
-                    </div>
-                    <div class="card p-4 flex items-center space-x-4">
-                        <span class="text-4xl">🏞️</span>
-                        <div>
-                            <h3 class="font-bold text-lg brand-green">Context</h3>
-                            <p class="text-sm">সাবজেক্টের পটভূমি, স্থান এবং সময়।</p>
-                        </div>
-                    </div>
-                     <div class="card p-4 flex items-center space-x-4">
-                        <span class="text-4xl">🏃‍♂️</span>
-                        <div>
-                            <h3 class="font-bold text-lg brand-blue">Action</h3>
-                            <p class="text-sm">সাবজেক্ট কী করছে তার বর্ণনা।</p>
-                        </div>
-                    </div>
-                    <div class="card p-4 flex items-center space-x-4">
-                        <span class="text-4xl">🎨</span>
-                        <div>
-                            <h3 class="font-bold text-lg brand-purple">Style</h3>
-                            <p class="text-sm">ভিডিওর সামগ্রিক ভিজ্যুয়াল টোন।</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Section 3: Enhancing Realism Flowchart -->
-        <section class="mb-12 md:mb-20">
-            <h2 class="text-3xl md:text-4xl font-bold text-center brand-dark-blue mb-8">বাস্তবতাকে পরবর্তী স্তরে নিয়ে যাওয়া</h2>
-            <p class="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">আপনার অ্যাকশনগুলিকে বাস্তবসম্মত ফিজিক্স এবং আবেগ দিয়ে সমৃদ্ধ করুন। এই ফ্লোচার্টটি দেখায় কিভাবে একটি সাধারণ অ্যাকশনকে আরও জীবন্ত করে তোলা যায়।</p>
-            <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8 text-center">
-                <div class="card p-6 w-64">
-                    <h3 class="text-lg font-bold brand-blue mb-2">ধাপ ১: মৌলিক অ্যাকশন</h3>
-                    <p class="text-sm">"Grandma Elara হাঁটছেন।"</p>
-                </div>
-                <div class="flow-arrow self-center transform md:rotate-0 rotate-90">➔</div>
-                <div class="card p-6 w-64">
-                    <h3 class="text-lg font-bold brand-green mb-2">ধাপ ২: বিস্তারিত ফিজিক্স যোগ করুন</h3>
-                    <p class="text-sm">"তার বুট নরম বরফে <span class='font-bold'>crunching softly</span> করছে। তার পোশাক বাতাসে <span class='font-bold'>ripples realistically</span> করছে।"</p>
-                </div>
-                 <div class="flow-arrow self-center transform md:rotate-0 rotate-90">➔</div>
-                <div class="card p-6 w-64">
-                    <h3 class="text-lg font-bold brand-red mb-2">ধাপ ৩: আবেগ যোগ করুন</h3>
-                    <p class="text-sm">"তার অভিব্যক্তি <span class='font-bold'>quiet contemplation</span> বা শান্ত চিন্তার।"</p>
-                </div>
-            </div>
-        </section>
+                        <div class="flow-arrow transform md:-rotate-0">&darr;</div>
 
-        <!-- Section 4: Cinematic Techniques -->
-        <section class="mb-12 md:mb-20">
-            <h2 class="text-3xl md:text-4xl font-bold text-center brand-dark-blue mb-12">আপনার ভেতরের পরিচালককে উন্মোচন করুন</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-                <div class="card p-6 md:p-8">
-                    <h3 class="text-2xl font-bold brand-purple mb-6 text-center">🎥 ক্যামেরা মোশন ও কম্পোজিশন</h3>
-                    <div class="space-y-4">
-                        <p><strong class="brand-purple">Tracking Shot:</strong> সাবজেক্টের সাথে ক্যামেরা চলে, দর্শককে অ্যাকশনের মধ্যে নিমজ্জিত করে।</p>
-                        <p><strong class="brand-purple">Arc Shot:</strong> সাবজেক্টের চারপাশে ক্যামেরা ঘোরে, একটি গতিশীল দৃষ্টিকোণ তৈরি করে।</p>
-                        <p><strong class="brand-purple">Medium Shot:</strong> সাবজেক্টের শরীরের উপরের অংশ দেখায়, শারীরিক ভাষা প্রকাশ করে।</p>
-                        <p><strong class="brand-purple">Shallow Depth of Field:</strong> সাবজেক্টকে ফোকাসে রেখে ব্যাকগ্রাউন্ড ঝাপসা করে, মনোযোগ আকর্ষণ করে।</p>
+                        <div class="flex-shrink-0 hierarchy-level rounded-lg p-6 shadow-lg w-64">
+                            <h3 class="text-xl font-bold" style="color: #EDE574;">স্তর ২: প্রভাব বিস্তার</h3>
+                            <p class="text-gray-300 mt-2">Swing Voter ও জনমত দখল</p>
+                             <div class="mt-4 text-sm font-semibold text-gray-400">অস্ত্র: মাইক্রো-অ্যাড, ইনফ্লুয়েন্সার, বট নেটওয়ার্ক</div>
+                        </div>
+
+                        <div class="flow-arrow transform md:-rotate-0">&darr;</div>
+
+                        <div class="flex-shrink-0 hierarchy-level rounded-lg p-6 shadow-lg w-64">
+                            <h3 class="text-xl font-bold" style="color: #EDE574;">স্তর ৩: কাউন্টার-অপারেশন</h3>
+                            <p class="text-gray-300 mt-2">প্রতিরোধ, প্রতিহিংসা ও বিজয় নিশ্চিতকরণ</p>
+                            <div class="mt-4 text-sm font-semibold text-gray-400">অস্ত্র: বট অ্যাটাক, ডেড ক্যাট স্ট্র্যাটেজি</div>
+                        </div>
                     </div>
                 </div>
-                <div class="card p-6 md:p-8">
-                     <h3 class="text-2xl font-bold brand-orange mb-6 text-center">💡 আলো এবং অ্যাম্বিয়েন্স</h3>
+            </section>
+
+            <section id="tier1" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="card rounded-xl shadow-2xl p-6 md:p-8">
+                    <h2 class="text-3xl font-bold mb-4" style="color: #F9D423;">স্তর ১: ফাউন্ডেশনাল কমান্ড</h2>
+                    <p class="text-gray-300 mb-6">এই স্তরের মূল লক্ষ্য হলো ব্যাপক জনসম্পৃক্তি অর্জন এবং একটি শক্তিশালী সমর্থক ভিত্তি গড়ে তোলা। Facebook Boosting এবং Messenger Group Command-এর মতো ডিজিটাল অস্ত্র ব্যবহার করে জনমত গঠন এবং জনগণের মধ্যে সক্রিয় অংশগ্রহণের অনুভূতি তৈরি করার প্রচেষ্টা চালানো হয়।</p>
+                    <div class="chart-container">
+                        <canvas id="boostingObjectivesChart"></canvas>
+                    </div>
+                    <p class="text-center text-gray-400 mt-4 text-sm font-medium">ফেসবুক বুস্টিং ক্যাম্পেইনের প্রধান উদ্দেশ্যসমূহ</p>
+                </div>
+                <div class="card rounded-xl shadow-2xl p-6 md:p-8">
+                     <h3 class="text-2xl font-bold mb-4 text-center" style="color: #EDE574;">মেসেঞ্জার কমান্ড নেটওয়ার্ক</h3>
+                     <p class="text-gray-400 mb-6 text-center">একটি অনুগত ডিজিটাল বাহিনীকে রিয়েল-টাইমে সুনির্দিষ্ট নির্দেশ প্রদান করা, যাতে তারা সমন্বিতভাবে অনলাইন আলোচনায় আধিপত্য বিস্তার করতে পারে।</p>
                      <div class="space-y-4">
-                        <p><strong class="brand-orange">Golden Hour:</strong> সূর্যোদয় বা সূর্যাস্তের সময়কার উষ্ণ, নরম আলো যা একটি নস্টালজিক অনুভূতি দেয়।</p>
-                        <p><strong class="brand-orange">Blue Hour:</strong> সূর্যোদয়ের ঠিক আগে বা সূর্যাস্তের ঠিক পরের শীতল আলো, যা শান্ত বা বিষণ্ণ মেজাজ তৈরি করে।</p>
-                        <p><strong class="brand-orange">Chiaroscuro:</strong> আলো এবং ছায়ার মধ্যে শক্তিশালী বৈপরীত্য, যা নাটকীয়তা এবং রহস্য তৈরি করে।</p>
-                        <p><strong class="brand-orange">Backlighting:</strong> সাবজেক্টের পেছন থেকে আসা আলো, যা একটি সিলুয়েট বা হ্যালো ইফেক্ট তৈরি করে।</p>
+                        <div class="hierarchy-level p-4 rounded-lg text-center shadow-md">
+                            <h4 class="font-bold text-lg text-white">কেন্দ্রীয় কমান্ড (৫-৭ জন)</h4>
+                            <p class="text-sm text-gray-300">কৌশল নির্ধারণ ও চূড়ান্ত নির্দেশ</p>
+                        </div>
+                        <div class="mx-auto w-px h-6 bg-orange-500"></div>
+                        <div class="hierarchy-level p-4 rounded-lg text-center shadow-md">
+                            <h4 class="font-bold text-lg text-white">জোনাল অ্যাডমিন (বিভাগীয়)</h4>
+                            <p class="text-sm text-gray-300">নির্দেশনা প্রেরণ</p>
+                        </div>
+                         <div class="mx-auto w-px h-6 bg-orange-500"></div>
+                        <div class="hierarchy-level p-4 rounded-lg text-center shadow-md">
+                            <h4 class="font-bold text-lg text-white">স্থানীয় গ্রুপ (হাজার হাজার)</h4>
+                             <p class="text-sm text-gray-300">নির্দেশ বাস্তবায়ন</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Section 5: The Master Prompt -->
-        <section>
-            <h2 class="text-3xl md:text-4xl font-bold text-center brand-dark-blue mb-8">চূড়ান্ত মাস্টার প্রম্পট</h2>
-            <p class="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">যখন সমস্ত উপাদান একত্রিত হয়, তখন আপনি একটি বিস্তারিত এবং শক্তিশালী প্রম্পট পান যা ভেও ৩-কে আপনার সৃজনশীল ধারণাকে সঠিকভাবে বাস্তবায়ন করতে পরিচালিত করে।</p>
-            <div class="card p-6 md:p-8">
-                <div class="gradient-bg text-white p-6 rounded-lg font-mono text-sm md:text-base leading-relaxed shadow-lg">
-                    <p><strong class="text-yellow-300">System Prompt:</strong> `Act as an expert cinematographer specializing in melancholic fantasy, create a scene for Grandma_Elara with dramatic lighting.`</p>
-                    <br>
-                    <p><strong class="text-yellow-300">Main Prompt:</strong> `Cinematic fantasy realism, enchanting and slightly melancholic, shot on 35mm film. An arc shot circles slowly around Grandma_Elara, starting from a smooth tracking shot. Medium shot, with a shallow depth of field. Soft, ethereal blue and purple twilight tones from the blue hour illuminate the forest, casting long shadows. Audio: The soft, rhythmic crunching of her boots in the snow, a distant hoot of an owl. No music. Grandma_Elara (from my ingredients), 78 years old, slowly walks with a steady gait, her cloak ripples realistically. Her expression is one of quiet contemplation, through a dense, ancient snowy forest.`</p>
-                    <br>
-                    <p><strong class="text-yellow-300">Negative Prompt:</strong> `urban background, man-made structures, blurry`</p>
+            <section id="tier2" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="card rounded-xl shadow-2xl p-6 md:p-8 md:col-span-2">
+                     <h2 class="text-3xl font-bold mb-4 text-center" style="color: #F9D423;">স্তর ২: লক্ষ্যভিত্তিক প্রভাব ও কৃত্রিম বাস্তবতা</h2>
+                      <p class="text-lg text-center text-gray-300 max-w-3xl mx-auto mb-8">এই স্তরে আরও সূক্ষ্ম ও আগ্রাসী কৌশল প্রয়োগ করা হয়। মাইক্রো-টার্গেটিং, ইনফ্লুয়েন্সার নেটওয়ার্ক এবং বট নেটওয়ার্ক ব্যবহার করে কৃত্রিম গণজোয়ার সৃষ্টি করা হয়। এর লক্ষ্য হলো ভিন্নমত দমন করে নিজেদের ন্যারেটিভকে সংখ্যাগরিষ্ঠের মতামত হিসেবে প্রতিষ্ঠা করা, যা "স্পাইরাল অফ সাইলেন্স" তৈরি করে।</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                         <div>
+                            <div class="chart-container">
+                                <canvas id="botAmplificationChart"></canvas>
+                            </div>
+                            <p class="text-center text-gray-400 mt-4 text-sm font-medium">বট নেটওয়ার্ক দ্বারা বার্তার কৃত্রিম অ্যামপ্লিফিকেশন</p>
+                        </div>
+                         <div>
+                             <div class="chart-container">
+                                <canvas id="contentEffectivenessChart"></canvas>
+                            </div>
+                             <p class="text-center text-gray-400 mt-4 text-sm font-medium">বিভিন্ন কনটেন্টের তুলনামূলক কার্যকারিতা</p>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+
+            <section id="tier3" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="card rounded-xl shadow-2xl p-6 md:p-8">
+                    <h2 class="text-3xl font-bold mb-4" style="color: #F9D423;">স্তর ৩: কাউন্টার-অপারেশনস</h2>
+                    <p class="text-gray-300 mb-6">এই স্তরের লক্ষ্য প্রতিপক্ষের ডিজিটাল আক্রমণ প্রতিহত করা, নিজেদের ন্যারেটিভ সুরক্ষিত রাখা এবং বিজয় নিশ্চিত করা। সংকটকালীন প্রতিক্রিয়া, ন্যারেটিভ পুনঃস্থাপন এবং গেট-আউট-দ্য-ভোট (GOTV) কার্যক্রম এখানে প্রধান।</p>
+                    <div class="chart-container">
+                        <canvas id="gotvChart"></canvas>
+                    </div>
+                     <p class="text-center text-gray-400 mt-4 text-sm font-medium">নির্বাচনের শেষ দিনগুলোতে GOTV কার্যক্রমের তীব্রতা</p>
                 </div>
-            </div>
-        </section>
+
+                <div class="card rounded-xl shadow-2xl p-6 md:p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-center" style="color: #EDE574;">ডেড ক্যাট স্ট্র্যাটেজি</h3>
+                    <p class="text-gray-400 mb-6 text-center">যখনই দলের বিরুদ্ধে কোনো বড় অভিযোগ ওঠে, তখন একটি সম্পূর্ণ ভিন্ন ও চাঞ্চল্যকর নতুন বিষয় নিয়ে এসে মূল আলোচনা থেকে জনসাধারণের মনোযোগ কার্যকরভাবে সরিয়ে নেওয়া হয়।</p>
+                    <div class="dead-cat-table p-4 rounded-lg flex flex-col items-center justify-center h-80 relative">
+                        <div class="text-center z-0">
+                            <h4 class="text-lg font-semibold text-gray-500">মূল আলোচনা:</h4>
+                            <p class="text-2xl font-bold text-red-500 animate-pulse">"প্রার্থীর বিরুদ্ধে দুর্নীতির অভিযোগ"</p>
+                        </div>
+                        <div class="dead-cat-item absolute bg-yellow-400 text-gray-900 p-6 rounded-full shadow-2xl text-center z-10">
+                            <span class="text-6xl">🐱</span>
+                            <h4 class="text-xl font-bold mt-2">চাঞ্চল্যকর নতুন খবর!</h4>
+                            <p>সম্পূর্ণ অপ্রাসঙ্গিক একটি বিষয়</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="kpi" class="card rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-2" style="color: #F9D423;">বিজয়ের পরিমাপ: আমরা জয়ের সম্ভাবনা মাপি</h2>
+                <p class="text-lg text-center text-gray-400 mb-8 max-w-3xl mx-auto">আমরা শুধু ‘লাইক’ বা ‘ফলোয়ার’ গুণি না। ডিজিটাল অভিযানের কার্যকারিতা পরিমাপ করতে আমরা সুনির্দিষ্ট Key Performance Indicators (KPIs) ব্যবহার করি, যা আমাদের কৌশলকে ডেটা-চালিত ও অভিযোজনযোগ্য করে তোলে।</p>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="chart-container">
+                        <canvas id="kpiRadarChart"></canvas>
+                    </div>
+                    <div class="text-gray-300 space-y-4">
+                        <div>
+                            <h4 class="text-xl font-bold" style="color: #EDE574;">Share of Voice (কথনের ভাগ)</h4>
+                            <p>অনলাইন আলোচনায় প্রতিপক্ষের তুলনায় আমাদের বার্তা কত শতাংশ জায়গা দখল করেছে তার পরিমাপ।</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold" style="color: #EDE574;">Sentiment Analysis (অনুভূতি বিশ্লেষণ)</h4>
+                            <p>আমাদের সম্পর্কে মানুষের অনুভূতি (ইতিবাচক/নেতিবাচক) কেমন তার মূল্যায়ন।</p>
+                        </div>
+                         <div>
+                            <h4 class="text-xl font-bold" style="color: #EDE574;">Persuasion Lift (প্রত্যয় পরিবর্তন)</h4>
+                            <p>আমাদের বিজ্ঞাপনের ফলে কতজন দোদুল্যমান ভোটার তাদের মত পরিবর্তন করেছে তার পরিমাপ।</p>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+            
+            <footer class="text-center mt-16 pt-8 border-t border-gray-700">
+                <h2 class="text-3xl md:text-4xl font-bold" style="color: #FF4E50;">সিদ্ধান্ত আপনার, সময় এখন</h2>
+                <p class="text-lg text-gray-300 mt-4 max-w-3xl mx-auto">রাজনৈতিক আধিপত্য অর্জনের সময় আর বিলম্ব করার নয়। আমাদের পরিকল্পনা, অস্ত্র এবং দক্ষ টিম প্রস্তুত। আসুন, যুদ্ধ শুরু করা যাক।</p>
+            </footer>
+
+        </main>
     </div>
 
     <script>
-        function wrapLabel(label) {
-            const maxLength = 16;
-            if (label.length <= maxLength) {
+        const vibrantPalette = {
+            red: '#FF4E50',
+            orange: '#FC913A',
+            yellow: '#F9D423',
+            lightGreen: '#EDE574',
+            lighterGreen: '#E1F5C4',
+            textColor: '#E5E7EB',
+            gridColor: 'rgba(229, 231, 235, 0.2)'
+        };
+
+        function wrapLabel(label, maxLength = 16) {
+            if (typeof label !== 'string' || label.length <= maxLength) {
                 return label;
             }
             const words = label.split(' ');
-            let lines = [];
+            const lines = [];
             let currentLine = '';
-            words.forEach(word => {
-                if ((currentLine + ' ' + word).length > maxLength) {
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxLength) {
                     lines.push(currentLine.trim());
                     currentLine = word;
                 } else {
-                    currentLine += ' ' + word;
+                    currentLine = (currentLine + ' ' + word).trim();
                 }
-            });
-            lines.push(currentLine.trim());
+            }
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
             return lines;
         }
 
-        const promptData = {
-            labels: [
-                'Subject (চরিত্র)', 
-                'Context (পরিবেশ)', 
-                'Action (কার্যকলাপ)', 
-                'Style (শৈলী)', 
-                'Camera (ক্যামেরা)', 
-                'Composition (গঠন)', 
-                'Ambiance (পরিবেশ)'
-            ].map(wrapLabel),
-            datasets: [{
-                label: 'প্রম্পটের গুরুত্ব',
-                data: [30, 25, 15, 10, 8, 7, 5],
-                backgroundColor: [
-                    '#1ABC9C', // Teal
-                    '#2ECC71', // Green
-                    '#3498DB', // Blue
-                    '#9B59B6', // Purple
-                    '#F39C12', // Orange
-                    '#E74C3C', // Red
-                    '#34495E', // Dark Blue
-                ],
-                borderColor: '#F8F9FA',
-                borderWidth: 4,
-                hoverOffset: 10
-            }]
-        };
-
-        const config = {
-            type: 'doughnut',
-            data: promptData,
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            font: {
-                                family: "'Hind Siliguri', sans-serif",
-                                size: 14,
-                            },
-                             color: '#4A4A4A',
-                            // Custom label generator to join wrapped labels back
-                            generateLabels: function(chart) {
-                                const data = chart.data;
-                                if (data.labels.length && data.datasets.length) {
-                                    return data.labels.map((label, i) => {
-                                        const meta = chart.getDatasetMeta(0);
-                                        const style = meta.controller.getStyle(i);
-                                        const text = Array.isArray(label) ? label.join(' ') : label;
-                                        return {
-                                            text: text,
-                                            fillStyle: style.backgroundColor,
-                                            strokeStyle: style.borderColor,
-                                            lineWidth: style.borderWidth,
-                                            hidden: !chart.isDatasetVisible(0),
-                                            index: i
-                                        };
-                                    });
-                                }
-                                return [];
-                            }
-                        }
-                    },
-                    tooltip: {
-                        bodyFont: {
-                           family: "'Hind Siliguri', sans-serif",
-                        },
-                        titleFont: {
-                           family: "'Roboto', sans-serif",
-                           weight: 'bold'
-                        },
-                        callbacks: {
-                            title: function(tooltipItems) {
-                                const item = tooltipItems[0];
-                                let label = item.chart.data.labels[item.dataIndex];
-                                if (Array.isArray(label)) {
-                                  return label.join(' ');
-                                } else {
-                                  return label;
-                                }
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: vibrantPalette.textColor,
+                        font: { size: 14, family: "'Hind Siliguri', sans-serif" }
+                    }
+                },
+                tooltip: {
+                    titleFont: { size: 16, family: "'Hind Siliguri', sans-serif" },
+                    bodyFont: { size: 14, family: "'Hind Siliguri', sans-serif" },
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
                             }
                         }
                     }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { color: vibrantPalette.textColor, font: { family: "'Hind Siliguri', sans-serif" } },
+                    grid: { color: vibrantPalette.gridColor }
                 },
-                cutout: '60%',
+                x: {
+                    ticks: { color: vibrantPalette.textColor, font: { family: "'Hind Siliguri', sans-serif" } },
+                    grid: { color: vibrantPalette.gridColor }
+                }
             }
         };
 
-        window.onload = function() {
-            const ctx = document.getElementById('promptCompositionChart').getContext('2d');
-            new Chart(ctx, config);
-        };
+        const boostingObjectivesCtx = document.getElementById('boostingObjectivesChart').getContext('2d');
+        new Chart(boostingObjectivesCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['পরিচিতি বৃদ্ধি (Awareness)', 'সম্পৃক্ততা তৈরি (Engagement)', 'তথ্য সংগ্রহ (Lead Gen)'],
+                datasets: [{
+                    label: 'Campaign Objectives',
+                    data: [45, 35, 20],
+                    backgroundColor: [vibrantPalette.red, vibrantPalette.orange, vibrantPalette.yellow],
+                    borderColor: '#1F2937',
+                    borderWidth: 4
+                }]
+            },
+            options: { ...commonChartOptions, scales: {} }
+        });
+
+        const contentEffectivenessCtx = document.getElementById('contentEffectivenessChart').getContext('2d');
+        new Chart(contentEffectivenessCtx, {
+            type: 'bar',
+            data: {
+                labels: ['আবেগঘন ভিডিও (৩০-৬০ সেকেন্ড)', 'ইনফোগ্রাফিক/ছবি', 'দীর্ঘ টেক্সট পোস্ট'],
+                datasets: [{
+                    label: 'সম্পৃক্ততার হার',
+                    data: [85, 65, 25],
+                    backgroundColor: [vibrantPalette.red, vibrantPalette.orange, vibrantPalette.yellow],
+                    borderColor: [vibrantPalette.red, vibrantPalette.orange, vibrantPalette.yellow],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: { ...commonChartOptions.plugins, legend: { display: false } },
+                 scales: {
+                    y: { ...commonChartOptions.scales.y, beginAtZero: true, max: 100, title: { display: true, text: 'Score', color: vibrantPalette.textColor} },
+                    x: { 
+                        ...commonChartOptions.scales.x, 
+                        ticks: { 
+                            ...commonChartOptions.scales.x.ticks, 
+                            callback: function(value) {
+                                return wrapLabel(this.chart.data.labels[value]);
+                            }
+                        } 
+                    }
+                }
+            }
+        });
+        
+        const botAmplificationCtx = document.getElementById('botAmplificationChart').getContext('2d');
+        new Chart(botAmplificationCtx, {
+            type: 'bubble',
+            data: {
+                datasets: [{
+                    label: 'স্বাভাবিক শেয়ার',
+                    data: Array.from({length: 15}, () => ({ x: Math.random() * 10, y: Math.random() * 10, r: Math.random() * 5 + 2 })),
+                    backgroundColor: vibrantPalette.orange + '99'
+                }, {
+                    label: 'বট দ্বারা অ্যামপ্লিফাইড',
+                    data: Array.from({length: 50}, () => ({ x: Math.random() * 10, y: Math.random() * 10, r: Math.random() * 8 + 4 })),
+                    backgroundColor: vibrantPalette.red + '99'
+                }]
+            },
+            options: { ...commonChartOptions, scales: { x: { display: false }, y: { display: false } } }
+        });
+
+        const gotvCtx = document.getElementById('gotvChart').getContext('2d');
+        new Chart(gotvCtx, {
+            type: 'line',
+            data: {
+                labels: ['নির্বাচনের ৭ দিন আগে', '৫ দিন আগে', '৩ দিন আগে', '১ দিন আগে', 'নির্বাচনের দিন'],
+                datasets: [{
+                    label: 'ডিজিটাল রিমাইন্ডার (SMS/WhatsApp)',
+                    data: [1500, 3500, 8000, 25000, 50000],
+                    fill: true,
+                    borderColor: vibrantPalette.red,
+                    backgroundColor: vibrantPalette.red + '33',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                scales: {
+                    y: { ...commonChartOptions.scales.y, beginAtZero: true, title: { display: true, text: 'পাঠানো বার্তার সংখ্যা', color: vibrantPalette.textColor} },
+                    x: { ...commonChartOptions.scales.x }
+                }
+            }
+        });
+        
+        const kpiRadarCtx = document.getElementById('kpiRadarChart').getContext('2d');
+        new Chart(kpiRadarCtx, {
+            type: 'radar',
+            data: {
+                labels: [wrapLabel('Share of Voice'), wrapLabel('Sentiment Analysis (Positive)'), wrapLabel('Persuasion Lift'), wrapLabel('Engagement Rate'), wrapLabel('Counter-Op Success')],
+                datasets: [{
+                    label: 'আমাদের ক্যাম্পেইন',
+                    data: [85, 90, 75, 95, 80],
+                    fill: true,
+                    backgroundColor: vibrantPalette.red + '66',
+                    borderColor: vibrantPalette.red,
+                    pointBackgroundColor: vibrantPalette.red,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: vibrantPalette.red
+                }, {
+                    label: 'প্রতিপক্ষের ক্যাম্পেইন',
+                    data: [40, 30, 25, 55, 35],
+                    fill: true,
+                    backgroundColor: vibrantPalette.orange + '66',
+                    borderColor: vibrantPalette.orange,
+                    pointBackgroundColor: vibrantPalette.orange,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: vibrantPalette.orange
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: vibrantPalette.gridColor },
+                        grid: { color: vibrantPalette.gridColor },
+                        pointLabels: { color: vibrantPalette.textColor, font: { size: 12, family: "'Hind Siliguri', sans-serif" } },
+                        ticks: {
+                            color: vibrantPalette.textColor,
+                            backdropColor: 'transparent'
+                        },
+                        min: 0,
+                        max: 100
+                    }
+                }
+            }
+        });
+
     </script>
 </body>
 </html>
-
